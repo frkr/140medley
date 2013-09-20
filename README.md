@@ -1,23 +1,30 @@
-140 medley
-==========
+[![Build Status](https://travis-ci.org/frkr/140medley.png)](https://travis-ci.org/frkr/140medley/)
 
-This is a micro-framework or a collection of small, helpful utilities for
-common javascript tasks.
+# 140medley
+=====
 
-### Size
+### This is a ***micro-framework*** or a collection of small, helpful utilities for common javascript tasks.
 
-* Source:  8.6 kb
-* Minified: 821 bytes
-* gzipped: 504 bytes
+## Size: [see original](https://github.com/honza/140medley)
 
-### Features
+- Source:  8.6 kb
+- Minified: 821 bytes
+- gzipped: 504 bytes
 
+## Features
 * templating - `t();`
 * local storage - `s();`
 * bind/unbind events - `b();`
 * create DOM elements - `m();`
 * DOM selector - `$();`
 * Get cross-browser xhr - `j();`
+
+### Usage
+
+## t
+```
+t()
+```
 
 Inspired by [140bytes][bytes].
 

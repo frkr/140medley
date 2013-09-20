@@ -1,0 +1,46 @@
+{
+    "name": "140medley",
+    "title": "140medley",
+    "description": "A micro-framework or a collection of small, helpful utilities for common javascript tasks.",
+    "version": "1dev",
+    "homepage": "https://github.com/frkr/140medley",
+    "licenses": [{
+        "type": "BSD",
+        "url": "https://github.com/frkr/140medley/blob/master/LICENSE"
+    }],
+    "keywords": ["micro","template","event","event","storage","dom","selector"],
+    "author": [{
+        "name": "Honza Pokorny",
+        "email": "me@honza.ca"
+    },
+    {
+        "name": "Davi SMesquita",
+        "email": "davimesquita@gmail.com"
+    }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/frkr/140medley.git"
+    },
+    "bugs": {
+        "url": "https://github.com/frkr/140medley/issues"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "grunt": "0.4.x",
+        "grunt-contrib-connect": "0.1.x",
+        "grunt-contrib-concat": "0.1.x",
+        "grunt-contrib-uglify": "0.1.x",
+        "grunt-contrib-jshint": "0.1.x",
+        "grunt-contrib-watch": "0.2.x",
+        "grunt-contrib-qunit": "0.2.x",
+        "grunt-tagrelease": "0.1.x"
+	},
+    "main": "dist/140medley.js",
+    "engines": {
+        "node": ">=0.8.0"
+    },
+    "scripts": {
+        "test": "grunt test"
+    }
+}
