@@ -44,7 +44,7 @@ a = j();
 ### Create DOM element
 ```
 var el = m('<h1>Hello</h1>');
- document.body.appendChild(el);
+document.body.appendChild(el);
 ```
 
 ### LocalStorage
@@ -53,10 +53,11 @@ s(placeholder,JSON);
 ```
 
 ### Templating
+```
 var hello = t("Hello, #{this.name || 'world'}!")
 
 console.log( // => "Hello, Jed!"
-  hello({name: "Jed"})
+	hello({name: "Jed"})
 )
 ```
 
