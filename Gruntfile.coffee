@@ -3,6 +3,13 @@ module.exports = (grunt) ->
     pkg: grunt.file.readJSON 'package.json'
 
     # meta options
+    # 'src/b.js'
+    # 'src/d.js'
+    # 'src/j.js'
+    # 'src/m.js'
+    # 'src/s.js'
+    # 'src/t.js'
+
     meta:
       banner: '
 /*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n
@@ -19,16 +26,7 @@ module.exports = (grunt) ->
         options:
           banner: '<%= meta.banner %>'
         src: [
-          'src/intro.js'
-          'src/core.js'
-          'src/setup.js'
-          'src/instance.js'
-          'src/event.js'
-          'src/pointerevent.js'
-          'src/utils.js'
-          'src/detection.js'
-          'src/gestures.js'
-          'src/outro.js']
+          'src/**.js']
         dest: 'dist/140medley.js'
 
     # minify the sourcecode

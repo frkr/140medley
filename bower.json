@@ -1,5 +1,5 @@
 {
     "name": "140medley",
-    "version": "1dev",
+    "version": "1.0.0",
     "main": ["dist/140medley.js"]
 }
