@@ -5,6 +5,10 @@
 
 This is a **micro-framework** or a collection of small, helpful utilities for common javascript tasks.
 
+## Download
+* Devel [download][download]
+* Production [download][downloadmin]
+
 ## Size:
 * Source:  8.6 kb
 * Minified: 821 bytes
@@ -65,3 +69,5 @@ Inspired by [140bytes][bytes].
 
 [bytes]: https://gist.github.com/962807
 [honza]: https://github.com/honza/140medley
+[download]: https://raw.github.com/frkr/140medley/master/dist/140medley.js
+[downloadmin]: https://raw.github.com/frkr/140medley/master/dist/140medley.min.js
