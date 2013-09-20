@@ -6,8 +6,8 @@
 This is a **micro-framework** or a collection of small, helpful utilities for common javascript tasks.
 
 ## Download
-* Devel [download][download]
-* Production [download][downloadmin]
+* Devel: [download][download]
+* Production: [download][downloadmin]
 
 ## Size:
 * Source:  8.6 kb
