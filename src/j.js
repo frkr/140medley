@@ -1,3 +1,5 @@
+/**
+
 Copyright (c) 2011, Jed Schmidt, Honza Pokorny, Davi Saranszky Mesquita
 All rights reserved.
 
@@ -20,3 +22,36 @@ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+**/
+
+/*
+ * Get cross browser xhr object
+
+ * More: https://gist.github.com/993585
+ */
+
+var j = function(
+  a // cursor placeholder
+){
+  for(                     // for all a
+    a=0;                   // from 0
+    a<4;                   // to 4,
+    a++                    // incrementing
+  ) try {                  // try
+    return a               // returning
+      ? new ActiveXObject( // a new ActiveXObject
+          [                // reflecting
+            ,              // (elided)
+            "Msxml2",      // the various
+            "Msxml3",      // working
+            "Microsoft"    // options
+          ][a] +           // for Microsoft implementations, and
+          ".XMLHTTP"       // the appropriate suffix,
+        )                  // but make sure to
+      : new XMLHttpRequest // try the w3c standard first, and
+  }
+
+  catch(e){}               // ignore when it fails.
+}
+

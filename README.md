@@ -21,9 +21,43 @@ This is a **micro-framework** or a collection of small, helpful utilities for co
 
 ## Usage
 
-### t
+### Bind/Unbind events
 ```
-t()
+var el = document.getElementyById('#container');
+b(el, 'click', function() {
+	console.log('clicked');
+});
+```
+
+### DOM selector
+```
+$('div');
+$('#name');
+$('.name');
+```
+
+### Get cross browser xhr object
+```
+a = j();
+```
+
+### Create DOM element
+```
+var el = m('<h1>Hello</h1>');
+ document.body.appendChild(el);
+```
+
+### LocalStorage
+```
+s(placeholder,JSON);
+```
+
+### Templating
+var hello = t("Hello, #{this.name || 'world'}!")
+
+console.log( // => "Hello, Jed!"
+  hello({name: "Jed"})
+)
 ```
 
 Inspired by [140bytes][bytes].

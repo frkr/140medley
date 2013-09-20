@@ -2,14 +2,19 @@
     "name": "140medley",
     "title": "140medley",
     "description": "A micro-framework or a collection of small, helpful utilities for common javascript tasks.",
-    "version": "1dev",
+    "version": "1.0.0",
     "homepage": "https://github.com/frkr/140medley",
     "licenses": [{
         "type": "BSD",
         "url": "https://github.com/frkr/140medley/blob/master/LICENSE"
     }],
     "keywords": ["micro","template","event","event","storage","dom","selector"],
-    "author": [{
+    "author": [
+    {
+        "name": "Jed Schmidt",
+	"email": "where@jed.is"
+    },
+    {
         "name": "Honza Pokorny",
         "email": "me@honza.ca"
     },
