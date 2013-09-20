@@ -3,13 +3,13 @@
 # 140medley
 =====
 
-### This is a ***micro-framework*** or a collection of small, helpful utilities for common javascript tasks.
+This is a **micro-framework** or a collection of small, helpful utilities for common javascript tasks.
 
-## Size: [see original](https://github.com/honza/140medley)
-
-- Source:  8.6 kb
-- Minified: 821 bytes
-- gzipped: 504 bytes
+## Size:
+* Source:  8.6 kb
+* Minified: 821 bytes
+* gzipped: 504 bytes
+* [see original][honza]
 
 ## Features
 * templating - `t();`
@@ -19,9 +19,9 @@
 * DOM selector - `$();`
 * Get cross-browser xhr - `j();`
 
-### Usage
+## Usage
 
-## t
+### t
 ```
 t()
 ```
@@ -29,3 +29,4 @@ t()
 Inspired by [140bytes][bytes].
 
 [bytes]: https://gist.github.com/962807
+[honza]: https://github.com/honza/140medley
