@@ -1,6 +1,6 @@
 /**
 
-Copyright (c) 2011, Jed Schmidt, Honza Pokorny, Davi Saranszky Mesquita
+Copyright (c) 2013, Davi Saranszky Mesquita, Honza Pokorny, Jed Schmidt
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -26,33 +26,42 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
 
 /*
- * DOM selector
+ * Templating
  *
  * Usage:
- *   $('div');
- *   $('#name');
- *   $('.name');
+ *  var hello = t("Hello, #{this.name || 'world'}!")
  *
- * More: https://gist.github.com/991057
+ *  console.log( // => "Hello, Jed!"
+ *    hello({name: "Jed"})
+ *  )
+ *
+ * More: https://gist.github.com/964762
  */
 
-var $ = function(
-  a,                         // take a simple selector like "name", "#name", or ".name", and
-  b                          // an optional context, and
+var t = function(
+  a, // the string source from which the template is compiled
+  b  // the default `with` context of the template (optional)
 ){
-  a = a.match(/^(\W)?(.*)/); // split the selector into name and symbol.
-  return(                    // return an element or list, from within the scope of
-    b                        // the passed context
-    || document              // or document,
-  )[
-    "getElement" + (         // obtained by the appropriate method calculated by
-      a[1]
-        ? a[1] == "#"
-          ? "ById"           // the node by ID,
-          : "sByClassName"   // the nodes by class name, or
-        : "sByTagName"       // the nodes by tag name,
+  return function(
+    c, // the object called as `this` in the template
+    d  // the `with` context of this template call (optional)
+  ){
+    return a.replace(
+      /#{([^}]*)}/g, // a regexp that finds the interpolated code: "#{<code>}"
+      function(
+        a, // not used, only positional
+        e  // the code matched by the interpolation
+      ){
+        return Function(
+          "x",
+          "with(x)return " + e // the result of the interpolated code
+        ).call(
+          c,    // pass the data object as `this`, with
+          d     // the most
+          || b  // specific
+          || {} // context.
+        )
+      }
     )
-  ](
-    a[2]                     // called with the name.
-  )
-}
+  }
+};

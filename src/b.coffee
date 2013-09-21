@@ -1,6 +1,6 @@
 /**
 
-Copyright (c) 2011, Jed Schmidt, Honza Pokorny, Davi Saranszky Mesquita
+Copyright (c) 2013, Davi Saranszky Mesquita, Honza Pokorny, Jed Schmidt
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -26,35 +26,36 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
 
 /*
- * LocalStorage
+ * Bind/Unbind events
  *
- * More: https://gist.github.com/966030
+ * Usage:
+ *   var el = document.getElementyById('#container');
+ *   b(el, 'click', function() {
+ *     console.log('clicked');
+ *   });
+ *
+ * More: https://gist.github.com/968186
  */
 
-var s = function(
-  a, // placeholder for storage object
-  b  // placeholder for JSON
+var p = function(
+  a, // a DOM element
+  b, // an event name such as "click"
+  c, // (placeholder)
+  d  // (placeholder)
 ){
-  return b
-    ? {                 // if JSON is supported
-      get: function(    // provide a getter function
-        c               // that takes a key
-      ){
-        return a[c] &&  // and if the key exists
-          b.parse(a[c]) // parses and returns it,
-      },
+  c = c || document; // use the document by default
+  d = c[             // save the current onevent　handler
+    b = "on" + b     // prepent the event name with "on"
+  ];
+  a = c[b] =                 // cache and replace the current handler
+    function(e) {            // with a function that
+      d = d && d(            // executes/caches the previous handler
+        e = e || c.event     // with a cross-browser object,
+      );
 
-      set: function(     // and a setter function
-        c,               // that takes a key
-        d                // and a value
-      ){
-        a[c] =           // and sets
-          b.stringify(d) // its serialization.
-      }
-    }
-    : {}                 // if JSON isn't supported, provide a shim.
-}(
-  this.localStorage // use native localStorage if available
-  || {},            // or an object otherwise
-  JSON              // use native JSON (required)
-)
+      return (a = a && b(e)) // and calls the passed function,
+        ? b                  // returning the current handler if it rebinds
+        : d                  // and the previous handler otherwise.
+    };
+  c = this // cache the window to fetch IE events
+};

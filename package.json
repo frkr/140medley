@@ -9,10 +9,20 @@
         "url": "https://github.com/frkr/140medley/blob/master/LICENSE"
     }],
     "keywords": ["micro","template","event","event","storage","dom","selector"],
-    "author": {
-	"name": "Davi SMesquita, Honza Pokorny, Jed Schmidt",
-	"email": "davimesquita@gmail.com, me@honza.ca, where@jed.is"
+    "author": [
+    {
+	"name": "Davi Saranszky Mesquita",
+	"email": "davimesquita@gmail.com"
     },
+    {
+	"name": "Honza Pokorny",
+	"email": "me@honza.ca"
+    },
+    {
+	"name": "Jed Schmidt",
+	"email": "where@jed.is"
+    }
+    ],
     "repository": {
         "type": "git",
         "url": "git://github.com/frkr/140medley.git"
@@ -29,7 +39,8 @@
         "grunt-contrib-jshint": "0.1.x",
         "grunt-contrib-watch": "0.2.x",
         "grunt-contrib-qunit": "0.2.x",
-        "grunt-tagrelease": "0.1.x"
+        "grunt-tagrelease": "0.1.x",
+	"grunt-contrib-coffee": "0.4.x"
 	},
     "main": "dist/140medley.js",
     "engines": {

@@ -1,6 +1,6 @@
 /**
 
-Copyright (c) 2011, Jed Schmidt, Honza Pokorny, Davi Saranszky Mesquita
+Copyright (c) 2013, Davi Saranszky Mesquita, Honza Pokorny, Jed Schmidt
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -26,32 +26,33 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
 
 /*
- * Get cross browser xhr object
-
- * More: https://gist.github.com/993585
+ * DOM selector
+ *
+ * Usage:
+ *   $('div');
+ *   $('#name');
+ *   $('.name');
+ *
+ * More: https://gist.github.com/991057
  */
 
-var j = function(
-  a // cursor placeholder
+var $ = function(
+  a,                         // take a simple selector like "name", "#name", or ".name", and
+  b                          // an optional context, and
 ){
-  for(                     // for all a
-    a=0;                   // from 0
-    a<4;                   // to 4,
-    a++                    // incrementing
-  ) try {                  // try
-    return a               // returning
-      ? new ActiveXObject( // a new ActiveXObject
-          [                // reflecting
-            ,              // (elided)
-            "Msxml2",      // the various
-            "Msxml3",      // working
-            "Microsoft"    // options
-          ][a] +           // for Microsoft implementations, and
-          ".XMLHTTP"       // the appropriate suffix,
-        )                  // but make sure to
-      : new XMLHttpRequest // try the w3c standard first, and
-  }
-
-  catch(e){}               // ignore when it fails.
+  a = a.match(/^(\W)?(.*)/); // split the selector into name and symbol.
+  return(                    // return an element or list, from within the scope of
+    b                        // the passed context
+    || document              // or document,
+  )[
+    "getElement" + (         // obtained by the appropriate method calculated by
+      a[1]
+        ? a[1] == "#"
+          ? "ById"           // the node by ID,
+          : "sByClassName"   // the nodes by class name, or
+        : "sByTagName"       // the nodes by tag name,
+    )
+  ](
+    a[2]                     // called with the name.
+  )
 }
-

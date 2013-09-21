@@ -1,7 +1,7 @@
 /*! 140medley - v1.0.0 - 2013-09-20
  * https://github.com/frkr/140medley
  *
- * Copyright (c) 2013 Davi SMesquita, Honza Pokorny, Jed Schmidt <davimesquita@gmail.com, me@honza.ca, where@jed.is>;
+ * Copyright (c) 2013 ,  
  * Licensed under the BSD license */
 
 /**

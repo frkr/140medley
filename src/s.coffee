@@ -1,6 +1,6 @@
 /**
 
-Copyright (c) 2011, Jed Schmidt, Honza Pokorny, Davi Saranszky Mesquita
+Copyright (c) 2013, Davi Saranszky Mesquita, Honza Pokorny, Jed Schmidt
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -26,28 +26,35 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
 
 /*
- * Create DOM element
+ * LocalStorage
  *
- * Usage:
- *   var el = m('<h1>Hello</h1>');
- *   document.body.appendChild(el);
- *
- * More: https://gist.github.com/966233
+ * More: https://gist.github.com/966030
  */
 
-var m = function(
-  a, // an HTML string
-  b, // placeholder
-  c  // placeholder
+var s = function(
+  a, // placeholder for storage object
+  b  // placeholder for JSON
 ){
-  b = document;                   // get the document,
-  c = b.createElement("p");       // create a container element,
-  c.innerHTML = a;                // write the HTML to it, and
-  a = b.createDocumentFragment(); // create a fragment.
+  return b
+    ? {                 // if JSON is supported
+      get: function(    // provide a getter function
+        c               // that takes a key
+      ){
+        return a[c] &&  // and if the key exists
+          b.parse(a[c]) // parses and returns it,
+      },
 
-  while (                         // while
-    b = c.firstChild              // the container element has a first child
-  ) a.appendChild(b);             // append the child to the fragment,
-
-  return a                        // and then return the fragment.
-}
+      set: function(     // and a setter function
+        c,               // that takes a key
+        d                // and a value
+      ){
+        a[c] =           // and sets
+          b.stringify(d) // its serialization.
+      }
+    }
+    : {}                 // if JSON isn't supported, provide a shim.
+}(
+  this.localStorage // use native localStorage if available
+  || {},            // or an object otherwise
+  JSON              // use native JSON (required)
+)

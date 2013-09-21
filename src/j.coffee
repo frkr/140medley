@@ -1,6 +1,6 @@
 /**
 
-Copyright (c) 2011, Jed Schmidt, Honza Pokorny, Davi Saranszky Mesquita
+Copyright (c) 2013, Davi Saranszky Mesquita, Honza Pokorny, Jed Schmidt
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -26,42 +26,32 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
 
 /*
- * Templating
- *
- * Usage:
- *  var hello = t("Hello, #{this.name || 'world'}!")
- *
- *  console.log( // => "Hello, Jed!"
- *    hello({name: "Jed"})
- *  )
- *
- * More: https://gist.github.com/964762
+ * Get cross browser xhr object
+
+ * More: https://gist.github.com/993585
  */
 
-var t = function(
-  a, // the string source from which the template is compiled
-  b  // the default `with` context of the template (optional)
+var j = function(
+  a // cursor placeholder
 ){
-  return function(
-    c, // the object called as `this` in the template
-    d  // the `with` context of this template call (optional)
-  ){
-    return a.replace(
-      /#{([^}]*)}/g, // a regexp that finds the interpolated code: "#{<code>}"
-      function(
-        a, // not used, only positional
-        e  // the code matched by the interpolation
-      ){
-        return Function(
-          "x",
-          "with(x)return " + e // the result of the interpolated code
-        ).call(
-          c,    // pass the data object as `this`, with
-          d     // the most
-          || b  // specific
-          || {} // context.
-        )
-      }
-    )
+  for(                     // for all a
+    a=0;                   // from 0
+    a<4;                   // to 4,
+    a++                    // incrementing
+  ) try {                  // try
+    return a               // returning
+      ? new ActiveXObject( // a new ActiveXObject
+          [                // reflecting
+            ,              // (elided)
+            "Msxml2",      // the various
+            "Msxml3",      // working
+            "Microsoft"    // options
+          ][a] +           // for Microsoft implementations, and
+          ".XMLHTTP"       // the appropriate suffix,
+        )                  // but make sure to
+      : new XMLHttpRequest // try the w3c standard first, and
   }
-};
+
+  catch(e){}               // ignore when it fails.
+}
+

@@ -3,36 +3,24 @@ module.exports = (grunt) ->
     pkg: grunt.file.readJSON 'package.json'
 
     # meta options
-    # 'src/b.js'
-    # 'src/d.js'
-    # 'src/j.js'
-    # 'src/m.js'
-    # 'src/s.js'
-    # 'src/t.js'
 
     meta:
-      banner: '
-/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n
- * <%= pkg.homepage %>\n
- *\n
- * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> <<%= pkg.author.email %>>;\n
- * Licensed under the <%= _.pluck(pkg.licenses, "type").join(", ") %> license */\n\n'
+      banner: '// Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> - <%= pkg.homepage %>'
 
-    # concat src files
-    concat:
-      options:
-        separator: '\n\n'
-      dist:
-        options:
-          banner: '<%= meta.banner %>'
-        src: [
-          'src/**.js']
-        dest: 'dist/140medley.js'
+    # compile
+    coffee:
+      compileBare:
+       options:
+        bare: true
+       files:
+        'dist/140medley.js': ['src/*.coffee']
 
     # minify the sourcecode
     uglify:
       options:
-        banner: '<%= meta.banner %>'
+       banner: '<%= meta.banner %>'
+       report: 'gzip'
+       compress: true
       dist:
         files:
           'dist/140medley.min.js': ['dist/140medley.js']
@@ -61,8 +49,8 @@ module.exports = (grunt) ->
     # watch for changes
     watch:
       scripts:
-        files: ['src/*.js','plugins/*.js']
-        tasks: ['concat']
+        files: ['src/*.coffee']
+        tasks: ['coffee']
         options:
           interrupt: true
 
@@ -93,9 +81,10 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-connect'
   grunt.loadNpmTasks 'grunt-contrib-qunit'
   grunt.loadNpmTasks 'grunt-tagrelease'
-
-
+  grunt.loadNpmTasks 'grunt-contrib-coffee'
+  
   # Default task(s).
   grunt.registerTask 'default', ['connect','watch']
   grunt.registerTask 'test', ['jshint','qunit']
-  grunt.registerTask 'build', ['concat','uglify','test']
+  grunt.registerTask 'build', ['coffee','uglify','test']
+  
