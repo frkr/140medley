@@ -1,21 +1,18 @@
-[![Build Status](https://travis-ci.org/frkr/140medley.png)](https://travis-ci.org/frkr/140medley/)
+# 140medley coffee [![Build Status](https://travis-ci.org/frkr/140medley.png)](https://travis-ci.org/frkr/140medley/)
 
-# 140medley
-=====
-
-This is a **micro-framework** or a collection of small, helpful utilities for common javascript tasks.
+> This is a **micro-framework** or a collection of small, helpful utilities for common javascript tasks.
 
 ## Download
-* Devel: [download][download]
 * Production: [download][downloadmin]
+* Developer: [download][download]
 
-## Size:
+### Size
 * Source:  8.6 kb
 * Minified: 821 bytes
 * gzipped: 504 bytes
 * [see original][honza]
 
-## Features
+### Features
 * templating - `t();`
 * local storage - `s();`
 * bind/unbind events - `b();`
