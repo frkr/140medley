@@ -13,12 +13,12 @@
 * [see original][honza]
 
 ### Features
-* Bind/Unbind events - `b`
-* DOM selector - `d`
-* Get cross-browser xhr - `j`
-* Create DOM elements - `m`
-* Local storage - `s`
-* Templating - `t`
+* Bind/Unbind events - `b();`
+* DOM selector - `d();`
+* Get cross-browser xhr - `j();`
+* Create DOM elements - `m();`
+* Local storage - `s();`
+* Templating - `t();`
 
 ## Usage
 
