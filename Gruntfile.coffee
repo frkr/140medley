@@ -5,15 +5,17 @@ module.exports = (grunt) ->
     # meta options
 
     meta:
-      banner: '// Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> - <%= pkg.homepage %>'
+      banner: '// Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> - <%= pkg.homepage %>\n'
 
     # compile
-    coffee:
-      compileBare:
-       options:
-        bare: true
-       files:
-        'dist/140medley.js': ['src/*.coffee']
+    concat:
+     options:
+      separator: '\n\n'
+     dist:
+      options:
+       banner: '<%= meta.banner %>'
+      src: ['src/*.js']
+      dest: 'dist/140medley.js'
 
     # minify the sourcecode
     uglify:
@@ -25,32 +27,11 @@ module.exports = (grunt) ->
         files:
           'dist/140medley.min.js': ['dist/140medley.js']
 
-    # check for optimisations and errors
-    jshint:
-      options:
-        curly: true
-        expr: true
-        newcap: true
-        quotmark: 'single'
-        regexdash: true
-        trailing: true
-        undef: true
-        unused: true
-        maxerr: 100
-        eqnull: true
-        sub: false
-        browser: true
-        node: true
-        globals:
-          define: false
-      dist:
-        src: ['dist/140medley.js']
-
     # watch for changes
     watch:
       scripts:
-        files: ['src/*.coffee']
-        tasks: ['coffee']
+        files: ['src/*.js', 'tests/*.js', 'tests/*.html']
+        tasks: ['concat','qunit']
         options:
           interrupt: true
 
@@ -64,27 +45,15 @@ module.exports = (grunt) ->
     qunit:
       all: ['tests/**/*.html']
 
-    # release
-    tagrelease:
-      file: 'package.json'
-      commit: true
-      message: 'Release %version%'
-      prefix: 'v'
-      annotate: false
-
-
   # Load tasks
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
-  grunt.loadNpmTasks 'grunt-contrib-jshint'
   grunt.loadNpmTasks 'grunt-contrib-connect'
   grunt.loadNpmTasks 'grunt-contrib-qunit'
-  grunt.loadNpmTasks 'grunt-tagrelease'
-  grunt.loadNpmTasks 'grunt-contrib-coffee'
   
   # Default task(s).
   grunt.registerTask 'default', ['connect','watch']
-  grunt.registerTask 'test', ['jshint','qunit']
-  grunt.registerTask 'build', ['coffee','uglify','test']
+  grunt.registerTask 'test', ['qunit']
+  grunt.registerTask 'build', ['concat','uglify','test']
   
