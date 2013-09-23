@@ -25,6 +25,7 @@
 ### Bind event
 * a DOM Element
 * b Event name
+
 ```
 var el = document.getElementById('container');
 b(el, 'click', function(e) {
@@ -70,6 +71,7 @@ console.log( // => "Hello, Jed!"
 ```
 > [More](https://gist.github.com/964762)
 
+---
 ---
 Inspired by [140bytes][bytes].
 
