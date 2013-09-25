@@ -23,8 +23,8 @@
 ## Usage
 
 ### Bind event
-* a DOM Element
-* b Event name
+* `a` DOM Element
+* `b` Event name
 
 ```
 var el = document.getElementById('container');
