@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Tests - 140medley</title>
+  <link rel="stylesheet" href="libs/qunit.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  
+  <!-- Test elements for various tests -->
+  <div id="container"></div>
+  <div id="test-id">ID Test</div>
+  <div class="test-class">Class Test 1</div>
+  <div class="test-class">Class Test 2</div>
+  <span class="test-class">Class Test 3</span>
+  <p>Paragraph 1</p>
+  <p>Paragraph 2</p>
+  <div id="context">
+    <span id="inner-id">Inner ID</span>
+    <div class="inner-class">Inner Class 1</div>
+    <div class="inner-class">Inner Class 2</div>
+    <p>Inner Paragraph</p>
+  </div>
+  <div id="test-container"></div>
+  
+  <!-- Load the compiled library -->
+  <script src="../dist/140medley.js"></script>
+  
+  <!-- Test dependencies -->
+  <script src="libs/jquery.js"></script>
+  <script src="libs/qunit.js"></script>
+  
+  <!-- Load all test files -->
+  <script src="b.js"></script>
+  <script src="d.js"></script>
+  <script src="j.js"></script>
+  <script src="m.js"></script>
+  <script src="s.js"></script>
+  <script src="t.js"></script>
+</body>
+</html>

@@ -55,5 +55,6 @@ module.exports = (grunt) ->
   # Default task(s).
   grunt.registerTask 'default', ['connect','watch']
   grunt.registerTask 'test', ['qunit']
+  grunt.registerTask 'coverage', ['concat', 'qunit']
   grunt.registerTask 'build', ['concat','uglify','test']
   

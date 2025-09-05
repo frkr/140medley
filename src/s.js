@@ -8,8 +8,9 @@ var s = function(
       get: function(    // provide a getter function
         c               // that takes a key
       ){
-        return a[c] &&  // and if the key exists
-          b.parse(a[c]) // parses and returns it,
+        return c in a   // and if the key exists
+          ? b.parse(a[c]) // parses and returns it,
+          : undefined     // otherwise return undefined
       },
 
       set: function(     // and a setter function

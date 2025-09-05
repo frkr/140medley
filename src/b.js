@@ -5,7 +5,7 @@ var b = function(
   c, // (placeholder)
   d  // (placeholder)
 ){
-  c = c || document; // use the document by default
+  c = a || document; // use the element or document by default
   d = c[             // save the current onevent　handler
     b = "on" + b     // prepent the event name with "on"
   ];
@@ -15,9 +15,10 @@ var b = function(
         e = e || c.event     // with a cross-browser object,
       );
 
-      return (a = a && b(e)) // and calls the passed function,
-        ? b                  // returning the current handler if it rebinds
-        : d                  // and the previous handler otherwise.
+      // Note: Original implementation had a bug here trying to call b(e)
+      // Just return the result of previous handler
+      return d
     };
-  c = this // cache the window to fetch IE events
+  c = this; // cache the window to fetch IE events
+  return a // return the handler function
 };
