@@ -22,3 +22,34 @@ test("d() selects by tag, id, and class within context", function() {
 	var byClass = d('.c1', container);
 	ok(byClass && byClass.length === 2, 'selected 2 by class');
 });
+test("d() selects without context (uses document)", function() {
+	var fixture = document.getElementById('qunit-fixture');
+	var testDiv = document.createElement('div');
+	testDiv.id = 'testElement';
+	fixture.appendChild(testDiv);
+
+	var result = d('#testElement');
+	ok(result === testDiv, 'selected element from document');
+
+	var spans = d('span');
+	ok(spans != null, 'selected spans from document');
+});
+test("d() handles all selector types", function() {
+	var fixture = document.getElementById('qunit-fixture');
+	
+	// Test tag selector without symbol
+	var div = document.createElement('div');
+	fixture.appendChild(div);
+	var tags = d('div', fixture);
+	ok(tags && tags.length > 0, 'tag selector works');
+	
+	// Test ID selector with #
+	div.id = 'myid';
+	var byId = d('#myid', fixture);
+	ok(byId === div, 'id selector works');
+	
+	// Test class selector with .
+	div.className = 'myclass';
+	var byClass = d('.myclass', fixture);
+	ok(byClass && byClass.length > 0, 'class selector works');
+});
