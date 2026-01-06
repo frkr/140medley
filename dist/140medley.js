@@ -1,5 +1,4 @@
 // Licensed BSD - https://github.com/frkr/140medley
-// Licensed BSD - https://github.com/frkr/140medley
 var b = function(
   a, // a DOM element
   b, // an event name such as "click"
@@ -21,30 +20,26 @@ var b = function(
         : d                  // and the previous handler otherwise.
     };
   c = this // cache the window to fetch IE events
-};
-
-//Licensed BSD - https://github.com/frkr/140medley
+};//Licensed BSD - https://github.com/frkr/140medley
 var d = function(
   a,                         // take a simple selector like "name", "#name", or ".name", and
   b                          // an optional context, and
 ){
   a = a.match(/^(\W)?(.*)/); // split the selector into name and symbol.
-  return(                    // return an element or list, from within the scope of
-    b                        // the passed context
-    || document              // or document,
+  return(
+    (a[1] == '#' ? document : b || document) // use document for ID selectors
   )[
-    "getElement" + (         // obtained by the appropriate method calculated by
+    "getElement" + (
       a[1]
         ? a[1] == "#"
-          ? "ById"           // the node by ID,
-          : "sByClassName"   // the nodes by class name, or
-        : "sByTagName"       // the nodes by tag name,
+          ? "ById"
+          : "sByClassName"
+        : "sByTagName"
     )
   ](
-    a[2]                     // called with the name.
+    a[2]
   )
 }
-
 //Licensed BSD - https://github.com/frkr/140medley
 var j = function(
   a // cursor placeholder
@@ -68,9 +63,7 @@ var j = function(
   }
 
   catch(e){}               // ignore when it fails.
-}
-
-// Licensed BSD - https://github.com/frkr/140medley
+}// Licensed BSD - https://github.com/frkr/140medley
 var m = function(
   a, // an HTML string
   b, // placeholder
@@ -86,9 +79,7 @@ var m = function(
   ) a.appendChild(b);             // append the child to the fragment,
 
   return a                        // and then return the fragment.
-}
-
-// Licensed BSD - https://github.com/frkr/140medley
+}// Licensed BSD - https://github.com/frkr/140medley
 var s = function(
   a, // placeholder for storage object
   b  // placeholder for JSON
@@ -115,9 +106,7 @@ var s = function(
   this.localStorage // use native localStorage if available
   || {},            // or an object otherwise
   JSON              // use native JSON (required)
-)
-
-// Licensed BSD - https://github.com/frkr/140medley
+)// Licensed BSD - https://github.com/frkr/140medley
 var t = function(
   a, // the string source from which the template is compiled
   b  // the default `with` context of the template (optional)

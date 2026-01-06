@@ -4,18 +4,17 @@ var d = function(
   b                          // an optional context, and
 ){
   a = a.match(/^(\W)?(.*)/); // split the selector into name and symbol.
-  return(                    // return an element or list, from within the scope of
-    b                        // the passed context
-    || document              // or document,
+  return(
+    (a[1] == '#' ? document : b || document) // use document for ID selectors
   )[
-    "getElement" + (         // obtained by the appropriate method calculated by
+    "getElement" + (
       a[1]
         ? a[1] == "#"
-          ? "ById"           // the node by ID,
-          : "sByClassName"   // the nodes by class name, or
-        : "sByTagName"       // the nodes by tag name,
+          ? "ById"
+          : "sByClassName"
+        : "sByTagName"
     )
   ](
-    a[2]                     // called with the name.
+    a[2]
   )
 }
