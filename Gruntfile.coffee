@@ -5,7 +5,7 @@ module.exports = (grunt) ->
     # meta options
 
     meta:
-      banner: '// Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> - <%= pkg.homepage %>\n'
+      banner: '// Licensed <%= pkg.name %> - <%= pkg.homepage %>\n'
 
     # compile
     concat:

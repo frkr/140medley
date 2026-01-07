@@ -1,4 +1,4 @@
-// Licensed BSD - https://github.com/frkr/140medley
+// Licensed 140medley - https://github.com/frkr/140medley
 // Licensed BSD - https://github.com/frkr/140medley
 var b = function(
   a, // a DOM element

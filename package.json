@@ -4,24 +4,34 @@
     "description": "A micro-framework or a collection of small, helpful utilities for common javascript tasks.",
     "version": "1.0.0",
     "homepage": "https://github.com/frkr/140medley",
-    "licenses": [{
-        "type": "BSD",
-        "url": "https://github.com/frkr/140medley/blob/master/LICENSE"
-    }],
-    "keywords": ["micro","template","event","event","storage","dom","selector"],
+    "licenses": [
+        {
+            "type": "BSD",
+            "url": "https://github.com/frkr/140medley/blob/master/LICENSE"
+        }
+    ],
+    "keywords": [
+        "micro",
+        "template",
+        "event",
+        "event",
+        "storage",
+        "dom",
+        "selector"
+    ],
     "author": [
-    {
-	"name": "Davi Saranszky Mesquita",
-	"email": "davimesquita@gmail.com"
-    },
-    {
-	"name": "Honza Pokorny",
-	"email": "me@honza.ca"
-    },
-    {
-	"name": "Jed Schmidt",
-	"email": "where@jed.is"
-    }
+        {
+            "name": "Davi Saranszky Mesquita",
+            "email": "davimesquita@gmail.com"
+        },
+        {
+            "name": "Honza Pokorny",
+            "email": "me@honza.ca"
+        },
+        {
+            "name": "Jed Schmidt",
+            "email": "where@jed.is"
+        }
     ],
     "repository": {
         "type": "git",
@@ -30,21 +40,25 @@
     "bugs": {
         "url": "https://github.com/frkr/140medley/issues"
     },
-    "dependencies": {},
     "devDependencies": {
-	"grunt": "0.4.x",
-	"grunt-contrib-connect": "0.1.x",
-        "grunt-contrib-concat": "0.1.x",
-        "grunt-contrib-uglify": "0.1.x",
-        "grunt-contrib-jshint": "0.1.x",
-        "grunt-contrib-watch": "0.2.x",
-        "grunt-contrib-qunit": "0.2.x"
-	},
+        "coffeescript": "^2.7.0",
+        "grunt": "^1.5.3",
+        "grunt-contrib-concat": "^1.0.1",
+        "grunt-contrib-connect": "^2.1.0",
+        "grunt-contrib-jshint": "^3.2.0",
+        "grunt-contrib-qunit": "^4.0.0",
+        "grunt-contrib-uglify": "^5.2.2",
+        "grunt-contrib-watch": "^1.1.0"
+    },
     "main": "dist/140medley.js",
     "engines": {
         "node": ">=0.8.0"
     },
     "scripts": {
-        "test": "grunt test"
+        "test": "node run-tests.js",
+        "serve": "node -e \"require('http').createServer((req, res) => { const path = req.url.slice(1); require('fs').createReadStream(path).pipe(res); }).listen(8000)\""
+    },
+    "dependencies": {
+        "puppeteer": "^24.34.0"
     }
 }

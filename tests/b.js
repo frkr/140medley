@@ -1,10 +1,10 @@
-var bitsok=false;
-test( "B create", function() {
-	var el = document.getElementById('container');
-	b(el,'click',function(){ bitsok=true; });
-	$("#container").trigger('onclick');
-	ok(1==1,"ok");
-});
-test( "B clicked",function(){
-	ok(bitsok,"click");
+test('B', function() {
+  var i = 0;
+  b(document, 'click', function() {
+    i++;
+  });
+  var ev = document.createEvent('MouseEvents');
+  ev.initEvent('click', true, true);
+  document.dispatchEvent(ev);
+  equal(i, 1, 'Event was triggered');
 });
