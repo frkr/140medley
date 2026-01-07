@@ -14,6 +14,7 @@ module.exports = (grunt) ->
      dist:
       options:
        banner: '<%= meta.banner %>'
+       sourceMap: true
       src: ['src/*.js']
       dest: 'dist/140medley.js'
 

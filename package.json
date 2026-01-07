@@ -48,7 +48,9 @@
         "grunt-contrib-jshint": "^3.2.0",
         "grunt-contrib-qunit": "^4.0.0",
         "grunt-contrib-uglify": "^5.2.2",
-        "grunt-contrib-watch": "^1.1.0"
+        "grunt-contrib-watch": "^1.1.0",
+        "nyc": "^17.1.0",
+        "puppeteer-to-istanbul": "^1.4.0"
     },
     "main": "dist/140medley.js",
     "engines": {
@@ -56,9 +58,24 @@
     },
     "scripts": {
         "test": "node run-tests.js",
-        "serve": "node -e \"require('http').createServer((req, res) => { const path = req.url.slice(1); require('fs').createReadStream(path).pipe(res); }).listen(8000)\""
+        "serve": "node -e \"require('http').createServer((req, res) => { const path = req.url.slice(1); require('fs').createReadStream(path).pipe(res); }).listen(8000)\"",
+        "coverage": "node run-tests.js && nyc report --reporter=text-summary --reporter=lcov"
     },
     "dependencies": {
         "puppeteer": "^24.34.0"
+    },
+    "nyc": {
+        "include": [
+            "src/**"
+        ],
+        "exclude": [
+            "node_modules",
+            "tests",
+            "dist"
+        ],
+        "reporter": [
+            "lcov",
+            "text-summary"
+        ]
     }
 }

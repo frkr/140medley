@@ -2,6 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const puppeteer = require('puppeteer');
+const pti = require('puppeteer-to-istanbul');
 
 const server = http.createServer((req, res) => {
   const filePath = path.join(__dirname, req.url);
@@ -24,6 +25,11 @@ const server = http.createServer((req, res) => {
 (async () => {
   const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
   const page = await browser.newPage();
+
+  await Promise.all([
+    page.coverage.startJSCoverage(),
+  ]);
+
   let failed = false;
 
   page.on('console', msg => console.log('PAGE LOG:', msg.text()));
@@ -63,6 +69,9 @@ const server = http.createServer((req, res) => {
       failed = true;
     }
   }
+
+  const jsCoverage = await page.coverage.stopJSCoverage();
+  pti.write(jsCoverage, { includeHostname: false, storagePath: './.nyc_output' });
 
   await browser.close();
   server.close();

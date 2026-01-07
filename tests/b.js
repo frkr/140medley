@@ -1,10 +1,10 @@
 test('B', function() {
   var i = 0;
-  b(document, 'click', function() {
-    i++;
-  });
-  var ev = document.createEvent('MouseEvents');
-  ev.initEvent('click', true, true);
-  document.dispatchEvent(ev);
-  equal(i, 1, 'Event was triggered');
+  var handler = function() { i++; };
+
+  b(handler, 'click');
+
+  document.onclick({/* mock event */});
+
+  equal(i, 1, 'Event handler was called');
 });

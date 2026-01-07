@@ -1,0 +1,1 @@
+{"parent":null,"pid":18622,"argv":["/home/jules/.nvm/versions/node/v22.21.1/bin/node","/home/jules/.nvm/versions/node/v22.21.1/bin/npm","test"],"execArgv":[],"cwd":"/app","time":1767814189420,"ppid":18611,"coverageFilename":"/app/.nyc_output/f468cfa6-d015-4180-9377-2e7aa096f91e.json","externalId":"","uuid":"f468cfa6-d015-4180-9377-2e7aa096f91e","files":[]}

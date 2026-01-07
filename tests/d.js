@@ -12,5 +12,5 @@ test('d', function() {
 
   var context = document.getElementById('qunit-fixture');
   el = d('.test-class', context);
-  ok(el.length === 2, 'Select by class name with context');
+  equal(el.length, 2, 'Select by class name with context');
 });
