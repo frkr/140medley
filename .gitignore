@@ -1,3 +1,5 @@
 node_modules
-.project
-.settings
+dist
+instrumented
+coverage
+.nyc_output

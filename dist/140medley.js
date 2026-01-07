@@ -2,43 +2,19 @@
 var b = function(
   a, // a DOM element
   b, // an event name such as "click"
-  c, // (placeholder)
-  d  // (placeholder)
+  c  // a function to call on the event
 ){
-  c = c || document; // use the document by default
-  d = c[             // save the current onevent　handler
-    b = "on" + b     // prepent the event name with "on"
-  ];
-  a = c[b] =                 // cache and replace the current handler
-    function(e) {            // with a function that
-      d = d && d(            // executes/caches the previous handler
-        e = e || c.event     // with a cross-browser object,
-      );
-
-      return (a = a && b(e)) // and calls the passed function,
-        ? b                  // returning the current handler if it rebinds
-        : d                  // and the previous handler otherwise.
-    };
-  c = this // cache the window to fetch IE events
+  if (a.addEventListener) {
+    a.addEventListener(b, c);
+  } else {
+    a.attachEvent('on' + b, c);
+  }
 };//Licensed BSD - https://github.com/frkr/140medley
 var d = function(
   a,                         // take a simple selector like "name", "#name", or ".name", and
   b                          // an optional context, and
 ){
-  a = a.match(/^(\W)?(.*)/); // split the selector into name and symbol.
-  return(
-    (a[1] == '#' ? document : b || document) // use document for ID selectors
-  )[
-    "getElement" + (
-      a[1]
-        ? a[1] == "#"
-          ? "ById"
-          : "sByClassName"
-        : "sByTagName"
-    )
-  ](
-    a[2]
-  )
+  return (b || document).querySelectorAll(a);
 }
 //Licensed BSD - https://github.com/frkr/140medley
 var j = function(

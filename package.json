@@ -51,6 +51,7 @@
     },
     "scripts": {
         "test": "node tests/runner.js",
-        "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test"
+        "coverage": "nyc report --reporter=lcov --reporter=text-lcov",
+        "build": "cat src/b.js src/d.js src/j.js src/m.js src/s.js src/t.js > dist/140medley.js"
     }
 }
