@@ -10,7 +10,7 @@ test('d', function() {
   el = d('span');
   ok(el.length === 3, 'Select by tag name');
 
-  var context = document.getElementById('qunit-fixture');
+  var context = document;
   el = d('.test-class', context);
   equal(el.length, 2, 'Select by class name with context');
 });

@@ -2,7 +2,7 @@ test('B', function() {
   var i = 0;
   var handler = function() { i++; };
 
-  b(handler, 'click');
+  b(handler, 'click', document);
 
   document.onclick({/* mock event */});
 
