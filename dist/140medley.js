@@ -4,10 +4,8 @@ var b = function(
   a, // a DOM element
   b, // an event name such as "click"
   c, // (placeholder)
-  d, // (placeholder)
-  f
+  d  // (placeholder)
 ){
-  f = a;
   c = c || document; // use the document by default
   d = c[             // save the current onevent　handler
     b = "on" + b     // prepent the event name with "on"
@@ -18,7 +16,7 @@ var b = function(
         e = e || c.event     // with a cross-browser object,
       );
 
-      return (a = a && f(e)) // and calls the passed function,
+      return (a = a && a(e)) // and calls the passed function,
         ? b                  // returning the current handler if it rebinds
         : d                  // and the previous handler otherwise.
     };
