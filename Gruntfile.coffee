@@ -5,7 +5,7 @@ module.exports = (grunt) ->
     # meta options
 
     meta:
-      banner: '// Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> - <%= pkg.homepage %>\n'
+      banner: '// Licensed <%= pkg.name %> - <%= pkg.homepage %>\n'
 
     # compile
     concat:
@@ -14,6 +14,7 @@ module.exports = (grunt) ->
      dist:
       options:
        banner: '<%= meta.banner %>'
+       sourceMap: true
       src: ['src/*.js']
       dest: 'dist/140medley.js'
 
